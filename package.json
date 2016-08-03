@@ -13,7 +13,7 @@
     "watch": "watchify -v `js/src/browserify-args.sh`",
     "lint": "jshint -c .jshintrc js/src",
     "test-unit": "mochify -- test/unit/**/*.js",
-    "test-unit-ci": "XUNIT_FILE=$CIRCLE_TEST_REPORTS/mocha/unit.xml mochify -R spec-xunit-file -- test/unit/**/*.js",
+    "test-unit-ci": "XUNIT_FILE=$CIRCLE_TEST_REPORTS/mocha/xunit.xml mochify -R xunit-file -- test/unit/**/*.js",
     "test-a11y": "./test/a11y.js",
     "test": "wdio test/wdio.conf.js",
     "test-quick": "wdio test/wdio.quick.js",
@@ -48,7 +48,8 @@
     "uglify-js": "^2.6.1",
     "watchify": "^3.6.1",
     "webdriverio": "^3.3.0",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "xunit-file": "^1.0.0"
   },
   "engines": {
     "node": ">= 4.2.2"
