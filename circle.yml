@@ -13,12 +13,14 @@ dependencies:
 test:
   override:
     # create directories for xunit reports
-    - mkdir $CIRCLE_TEST_REPORTS/mocha
-    - mkdir $CIRCLE_TEST_REPORTS/browser
-    - mkdir $CIRCLE_TEST_REPORTS/a11y
+    - mkdir -p $CIRCLE_TEST_REPORTS/mocha/
+    - mkdir -p $CIRCLE_TEST_REPORTS/browser/
+    - mkdir -p $CIRCLE_TEST_REPORTS/a11y/
 
     # run unit tests before browser tests with Sauce Labs
-    - XUNIT_FILE=$CIRCLE_TEST_REPORTS/mocha/xunit.xml npm run test-unit-ci
+    - npm run test-unit-ci
+      environment:
+        XUNIT_FILE: $CIRCLE_TEST_REPORTS/mocha/xunit.xml
 
     # XXX this is a workaround for a bug in WebDriverIO
     # that doesn't allow for absolute paths in the xunit
